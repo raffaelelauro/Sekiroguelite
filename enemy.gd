@@ -5,5 +5,6 @@ extends RigidBody3D
 
 	
 func _process(delta: float) -> void:
-	if target != null :
+	if target != null and !position.is_equal_approx(target.position):
+		look_at(target.position)
 		position = position.move_toward(target.position, delta*speed)
