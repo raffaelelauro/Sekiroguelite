@@ -25,5 +25,3 @@ mesh = SubResource("CylinderMesh_7k104")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -1.37665e-09, -1.37665e-09, -0.0314941)
 shape = SubResource("CylinderShape3D_4gyqm")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
