@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://durulyhj2ovs7"]
+[gd_scene load_steps=5 format=3 uid="uid://durulyhj2ovs7"]
 
 [ext_resource type="Script" uid="uid://diuhrux61quqw" path="res://player.gd" id="1_4flbx"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4flbx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4flbx"]
-height = 0.240143
+height = 0.596413
+radius = 0.661133
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
+radius = 2.0267
 
 [node name="Player" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_4flbx")
 
@@ -16,5 +22,16 @@ transform = Transform3D(1, 0, 0, 0, 0.12, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000350952, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00271222, 0)
 shape = SubResource("CylinderShape3D_4flbx")
+
+[node name="ParryArea3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="ParryCollisionShape3D" type="CollisionShape3D" parent="ParryArea3D"]
+shape = SubResource("SphereShape3D_4flbx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ParryArea3D" to="." method="_on_parry_area_3d_body_entered"]
+[connection signal="body_exited" from="ParryArea3D" to="." method="_on_parry_area_3d_body_exited"]

@@ -1,9 +1,10 @@
 extends RigidBody3D
 
-@export var move_speed = 10
-@export var rotation_angle = PI / 8.0
+@export var move_speed: float = 10.0
+@export var rotation_angle: float = PI / 8.0
 
-var base_rotation = Vector3.ZERO;
+var base_rotation: Vector3 = Vector3.ZERO
+var target: Enemy = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	var target_rotation = Vector3.ZERO
+	var target_rotation:Vector3 = Vector3.ZERO
 		
 	# Capture player movement
 	if Input.is_action_pressed("Front"):
@@ -28,5 +29,32 @@ func _process(delta: float) -> void:
 		position.z += move_speed*delta
 		target_rotation.x = base_rotation.x+rotation_angle
 		
+	# Capture player actions
+	if Input.is_action_just_pressed("Parry"):
+		parry()
+		
 	# Update rotation
 	rotation = rotation.move_toward(target_rotation, TAU * delta)
+	
+func parry() -> void:
+	print('PARRY')
+	if target != null :
+		target.is_parried()
+
+
+func _on_parry_area_3d_body_entered(body:Node3D) -> void:
+	print('PARRIABLE DETECTED')
+	if body != null :
+		print('NEW TARGET')
+		target = body
+
+
+
+func _on_parry_area_3d_body_exited(body:Node3D) -> void:
+	print('PARRIABLE LEFT')
+	if target == body :
+		print('NO MORE TARGET')
+		target = null
+
+func _on_body_entered(body: Node) -> void:
+	print("HIT")

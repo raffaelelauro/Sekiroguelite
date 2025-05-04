@@ -10,8 +10,11 @@ material = SubResource("StandardMaterial3D_7xaro")
 top_radius = 0.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4gyqm"]
+height = 2.06299
 
 [node name="Enemy" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource("1_7k104")
 
@@ -20,5 +23,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_7k104")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -1.37665e-09, -1.37665e-09, -0.0314941)
 shape = SubResource("CylinderShape3D_4gyqm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
