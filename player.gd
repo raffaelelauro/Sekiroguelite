@@ -2,14 +2,21 @@ extends RigidBody3D
 
 @export var move_speed: float = 10.0
 @export var rotation_angle: float = PI / 8.0
+@export var parry_radius: float = 2.0
+
+@onready var parry_area: ParryArea = $ParryArea3D
 
 var base_rotation: Vector3 = Vector3.ZERO
 var target: Enemy = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Setup
 	base_rotation = rotation;
-	pass # Replace with function body.
+	
+	# Setup parry area
+	if parry_area != null:
+		parry_area.set_parry_radius(parry_radius)
 
 func _process(delta: float) -> void:
 	
@@ -47,9 +54,7 @@ func _on_parry_area_3d_body_entered(body:Node3D) -> void:
 	if body != null :
 		print('NEW TARGET')
 		target = body
-
-
-
+		
 func _on_parry_area_3d_body_exited(body:Node3D) -> void:
 	print('PARRIABLE LEFT')
 	if target == body :

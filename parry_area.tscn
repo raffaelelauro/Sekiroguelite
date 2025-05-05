@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://1xqp6xrderhq"]
+
+[ext_resource type="Script" uid="uid://0d18fp4krjgp" path="res://parry_area.gd" id="1_s5wk8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
+radius = 2.0
+
+[node name="ParryArea3D" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_s5wk8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4flbx")
