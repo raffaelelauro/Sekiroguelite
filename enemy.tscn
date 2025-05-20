@@ -14,7 +14,7 @@ height = 2.06299
 
 [node name="Enemy" type="RigidBody3D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 11
 gravity_scale = 0.0
 script = ExtResource("1_7k104")
 

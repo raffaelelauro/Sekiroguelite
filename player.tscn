@@ -10,7 +10,7 @@ height = 0.24
 
 [node name="Player" type="RigidBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
@@ -26,6 +26,7 @@ mesh = SubResource("CylinderMesh_4flbx")
 skeleton = NodePath("../..")
 
 [node name="ParryArea3D" parent="." instance=ExtResource("2_onrkg")]
+collision_mask = 12
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="ParryArea3D" to="." method="_on_parry_area_3d_body_entered"]

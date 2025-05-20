@@ -9,7 +9,7 @@ extends RigidBody3D
 @onready var disc: Node3D = $Disc
 
 var base_rotation: Vector3 = Vector3.ZERO
-var target: Enemy = null
+var target: AbstractParriable = null
 var initial_position: Vector3 = Vector3.ZERO
 var to_initial_position: bool = false
 var invincible: bool = false
@@ -61,7 +61,7 @@ func parry() -> void:
 	# Compute the new disc position
 	var new_disc_position:Vector3 = disc.position
 	if target != null:
-		target.is_parried()
+		target.is_parried(self)
 		new_disc_position = disc.position.move_toward(target.position, parry_radius)
 		invincible = true
 	else:
