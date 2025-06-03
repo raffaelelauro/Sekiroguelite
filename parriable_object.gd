@@ -5,6 +5,3 @@ extends AbstractParriable
 
 func _ready() -> void:
 	apply_force(initial_impulse_direction * initial_impulse_magnitude)
-	
-func _process(delta:float) -> void :
-	print(position)

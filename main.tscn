@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn22cb6mfk2qp"]
+[gd_scene load_steps=8 format=3 uid="uid://cn22cb6mfk2qp"]
 
+[ext_resource type="Script" uid="uid://cl5xdo0vrlgh5" path="res://level.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://durulyhj2ovs7" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c6bc25sbv2i6i" path="res://parriable_object.tscn" id="2_0xm2m"]
 
@@ -19,7 +20,11 @@ sky_rotation = Vector3(0, 0, -0.785398)
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+font_size = 45
+
 [node name="main" type="Node3D"]
+script = ExtResource("1_h2yge")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h2yge")
@@ -36,4 +41,29 @@ transform = Transform3D(-4.37114e-08, 0.939693, -0.34202, 0, 0.34202, 0.939693, 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 
 [node name="ParriableObject" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5693, -1.90735e-06, -0.0394535)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2442, -1.90735e-06, -0.0394535)
+
+[node name="ParriableObject2" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1088, -3.8147e-06, -0.078907)
+
+[node name="ParriableObject3" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1666, -7.6294e-06, -0.157814)
+
+[node name="PlayerLife" type="Label" parent="."]
+offset_right = 162.0
+offset_bottom = 52.0
+text = "Life : ..."
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 1149.0
+offset_bottom = 647.0
+text = "Yer dead..."
+label_settings = SubResource("LabelSettings_h2yge")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]
+[connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]

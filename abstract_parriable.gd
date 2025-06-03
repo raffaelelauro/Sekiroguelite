@@ -14,3 +14,6 @@ func is_parried(parried_by: RigidBody3D) -> void:
 
 	apply_force((position - parried_by.position).normalized()*repulsion_magnitude)
 	apply_torque(Vector3(1, 0, 0) * repulsion_torque)
+	
+func player_hit() -> void:
+	queue_free()
