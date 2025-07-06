@@ -6,6 +6,8 @@ extends Node3D
 
 @onready var timer = $Timer
 
+var objects_count: int = 0
+
 func _ready() -> void:
 	if timer != null :
 		timer.wait_time = wait_time
@@ -15,7 +17,9 @@ func _ready() -> void:
 func spawn() -> void :
 	if object_type != null:
 		print("SPAWN")
+		objects_count += 1
 		var object: AbstractParriable = object_type.instantiate()
+		object.set_name(object.get_class() + '_' + str(objects_count))
 		add_child(object)
 	else :
 		print("No object type parameter !")

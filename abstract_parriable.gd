@@ -23,9 +23,10 @@ func is_parried(parried_by: RigidBody3D) -> void:
 	
 	destroy_timer.start()
 	
-	
 func player_hit() -> void:
 	self.destroy_self()
 	
 func destroy_self() -> void:
+	print("Destroying " + self.get_name())
 	queue_free()
+	
