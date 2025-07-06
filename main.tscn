@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn22cb6mfk2qp"]
+[gd_scene load_steps=10 format=3 uid="uid://cn22cb6mfk2qp"]
 
 [ext_resource type="Script" uid="uid://cl5xdo0vrlgh5" path="res://level.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://durulyhj2ovs7" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c6bc25sbv2i6i" path="res://objects/parriable_object.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://vt2vl6afoo8j" path="res://spawn/parriable_spawn_area.tscn" id="3_h2yge"]
-[ext_resource type="Script" uid="uid://ccfp1fryf8p0k" path="res://spawn/enemies_spawn_area.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cilyqpkqti672" path="res://enemies/enemy.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
@@ -63,12 +62,6 @@ text = "Yer dead..."
 label_settings = SubResource("LabelSettings_h2yge")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="EnemiesSpawnArea" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.87936, 0, -9.95242)
-script = ExtResource("5_lquwl")
-target = NodePath("../Player")
-object_type = ExtResource("6_7mycd")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_7mycd")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0339434, 0, -18.5917)
