@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://vslhntkspogu"]
+
+[ext_resource type="Script" uid="uid://ccfp1fryf8p0k" path="res://spawn/enemies_spawn_area.gd" id="1_7tkge"]
+[ext_resource type="PackedScene" uid="uid://cilyqpkqti672" path="res://enemies/enemy.tscn" id="2_pa71f"]
+
+[node name="EnemiesSpawnArea" type="Node3D"]
+script = ExtResource("1_7tkge")
+object_type = ExtResource("2_pa71f")
+metadata/_custom_type_script = "uid://dnmatd3lk5uqp"
+
+[node name="Timer" type="Timer" parent="."]

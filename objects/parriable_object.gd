@@ -1,5 +1,7 @@
 extends AbstractParriable
 
+class_name ParriableObject
+
 @export var initial_impulse_magnitude: float = 750
 @export var initial_impulse_direction: Vector3 = Vector3(-1, 0, 0)
 @export var destroy_distance: float = 20 

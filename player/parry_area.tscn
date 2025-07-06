@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://1xqp6xrderhq"]
 
-[ext_resource type="Script" uid="uid://0d18fp4krjgp" path="res://parry_area.gd" id="1_s5wk8"]
+[ext_resource type="Script" uid="uid://0d18fp4krjgp" path="res://player/parry_area.gd" id="1_s5wk8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
 radius = 2.0

@@ -106,7 +106,7 @@ func _on_body_entered(body: Node) -> void:
 	if body is AbstractParriable :
 		var body_parriable :AbstractParriable = body as AbstractParriable
 		if !invincible:
-			body_parriable.player_hit();
+			body_parriable.collision_hit();
 			life -= 1
 			life_changed.emit();
 		else:

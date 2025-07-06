@@ -14,3 +14,11 @@ func _physics_process(delta: float) -> void:
 func is_parried(parried_by: RigidBody3D) -> void:
 	super.is_parried(parried_by)
 	stop = true
+
+# Detect collision with AbstractParriable
+func _on_body_entered(body: Node) -> void:
+	print("HIT")
+	if body is AbstractParriable:
+		var body_parriable_object: ParriableObject = body as AbstractParriable
+		body_parriable_object.collision_hit()
+		self.destroy_self()

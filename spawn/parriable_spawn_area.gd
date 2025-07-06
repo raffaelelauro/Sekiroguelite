@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name ParriableSpawnArea
+
 @export var wait_time: float = 5.0
 @export var one_shot: bool = false
 @export var object_type: Resource
@@ -16,9 +18,8 @@ func _ready() -> void:
 
 func spawn() -> void :
 	if object_type != null:
-		print("SPAWN")
 		objects_count += 1
-		var object: AbstractParriable = object_type.instantiate()
+		var object: AbstractParriable = self.create_spawnable()
 		object.set_name(object.get_class() + '_' + str(objects_count))
 		add_child(object)
 	else :
@@ -34,3 +35,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _on_timer_timeout() -> void:
 	spawn()
+	
+func create_spawnable() -> AbstractParriable :
+	return object_type.instantiate() as AbstractParriable

@@ -1,6 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6bc25sbv2i6i"]
 
-[ext_resource type="Script" uid="uid://cv6iq0mxeqkb4" path="res://parriable_object.gd" id="1_vujbw"]
+[ext_resource type="Script" uid="uid://cv6iq0mxeqkb4" path="res://objects/parriable_object.gd" id="1_vujbw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wg4se"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vujbw"]
 albedo_color = Color(0.837249, 0.276337, 0.598425, 1)
@@ -8,16 +10,15 @@ albedo_color = Color(0.837249, 0.276337, 0.598425, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_qu2ox"]
 material = SubResource("StandardMaterial3D_vujbw")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wg4se"]
-
 [node name="ParriableObject" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 7
 gravity_scale = 0.0
 script = ExtResource("1_vujbw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_qu2ox")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_wg4se")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("SphereMesh_qu2ox")
+skeleton = NodePath("../..")

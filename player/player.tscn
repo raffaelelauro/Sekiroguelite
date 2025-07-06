@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://durulyhj2ovs7"]
 
-[ext_resource type="Script" uid="uid://diuhrux61quqw" path="res://player.gd" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://1xqp6xrderhq" path="res://parry_area.tscn" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://diuhrux61quqw" path="res://player/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://1xqp6xrderhq" path="res://player/parry_area.tscn" id="2_onrkg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4flbx"]
 height = 0.24
