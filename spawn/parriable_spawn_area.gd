@@ -12,9 +12,12 @@ var objects_count: int = 0
 
 func _ready() -> void:
 	if timer != null :
+		print("Spawn timer started")
 		timer.wait_time = wait_time
 		timer.one_shot = one_shot
 		timer.start()
+	else:
+		print("No timer defined")
 
 func spawn() -> void :
 	if object_type != null:

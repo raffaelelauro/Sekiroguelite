@@ -7,9 +7,9 @@ class_name Enemy
 var stop: bool = false
 	
 func _physics_process(delta: float) -> void:
-	if !stop and target != null and !position.is_equal_approx(target.position):
-		look_at(target.position)
-		apply_force((target.position-position).normalized() * delta * speed)
+	if !stop and target != null and !global_position.is_equal_approx(target.global_position):
+		look_at(target.global_position)
+		apply_force((target.global_position-global_position).normalized() * delta * speed)
 		
 func is_parried(parried_by: RigidBody3D) -> void:
 	super.is_parried(parried_by)
@@ -19,6 +19,6 @@ func is_parried(parried_by: RigidBody3D) -> void:
 func _on_body_entered(body: Node) -> void:
 	print("HIT")
 	if body is AbstractParriable:
-		var body_parriable_object: ParriableObject = body as AbstractParriable
+		var body_parriable_object: AbstractParriable = body as AbstractParriable
 		body_parriable_object.collision_hit()
 		self.destroy_self()
