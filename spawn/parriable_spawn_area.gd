@@ -15,7 +15,6 @@ func _ready() -> void:
 		print("Spawn timer started")
 		timer.wait_time = wait_time
 		timer.one_shot = one_shot
-		timer.start()
 	else:
 		print("No timer defined")
 
@@ -41,3 +40,9 @@ func _on_timer_timeout() -> void:
 	
 func create_spawnable() -> AbstractParriable :
 	return object_type.instantiate() as AbstractParriable
+	
+func start_spawn() -> void :
+	timer.start()
+	
+func stop_spawn() -> void:
+	timer.stop()

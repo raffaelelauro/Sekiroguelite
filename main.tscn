@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn22cb6mfk2qp"]
+[gd_scene load_steps=8 format=3 uid="uid://cn22cb6mfk2qp"]
 
 [ext_resource type="Script" uid="uid://cl5xdo0vrlgh5" path="res://level.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://durulyhj2ovs7" path="res://player/player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://c6bc25sbv2i6i" path="res://objects/parriable_object.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cilyqpkqti672" path="res://enemies/enemy.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cwerch3h4k57n" path="res://levels/level1_wave.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_top_color = Color(0.0431373, 0.545098, 0.509804, 1)
@@ -41,10 +40,6 @@ transform = Transform3D(-4.37114e-08, 0.939657, -0.342118, -4.57744e-12, 0.34211
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2493, 0, -8.48581)
-target = NodePath("../Player")
-
 [node name="PlayerLife" type="Label" parent="."]
 offset_right = 162.0
 offset_bottom = 52.0
@@ -61,8 +56,9 @@ label_settings = SubResource("LabelSettings_h2yge")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ParriableObject" parent="." instance=ExtResource("4_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9838, 0, 0)
+[node name="Level1Wave" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3228, 0, 0)
+target = NodePath("../Player")
 
 [connection signal="dead" from="Player" to="." method="_on_player_dead"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]

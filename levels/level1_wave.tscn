@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwerch3h4k57n"]
+
+[ext_resource type="Script" uid="uid://b3nq3ojhs1651" path="res://levels/wave.gd" id="1_acon6"]
+[ext_resource type="PackedScene" uid="uid://vslhntkspogu" path="res://spawn/enemies_spawn_area.tscn" id="2_xn6xx"]
+
+[node name="Level1Wave" type="Node3D"]
+script = ExtResource("1_acon6")
+waves = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+
+[node name="EnemiesSpawnArea0" parent="." instance=ExtResource("2_xn6xx")]
+
+[node name="EnemiesSpawnAreaR1" parent="." instance=ExtResource("2_xn6xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="EnemiesSpawnAreaR2" parent="." instance=ExtResource("2_xn6xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="EnemiesSpawnAreaL1" parent="." instance=ExtResource("2_xn6xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="EnemiesSpawnAreaL2" parent="." instance=ExtResource("2_xn6xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
